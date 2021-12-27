@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-// SELETE ƒı∏ÆπÆ Mappet Class
+// SELETE ÏøºÎ¶¨Î¨∏ Mappet Class
 class CareerRowMapper implements RowMapper<CareerInfoVO>{
 
 	@Override
@@ -36,14 +36,14 @@ public class CareerInfoDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	// ƒı∏ÆπÆ
-	private String GET_ONE = "SELECT * FROM CAREERINFO WHERE CNUM=?";
-	private String GET_LIST = "SELECT * FROM CAREERINFO WHERE CMEM=? ORDER BY CNUM ASC, STARTDATE ASC";
-	private String INSERT = "INSERT INTO CAREERINFO (STARTDATE, ENDDATE, COMPNAME, POSITION, CRANK, DUTY, CMEM) VALUES (?, ?, ?, ?, ?, ?, ?)";
-	private String UPDATE = "UPDATE CAREERINFO SET STARTDATE=?, ENDDATE=?, COMPNAME=?, POSITION=?, CRANK=?, DUTY=? WHERE CNUM=?";
-	private String DELETE = "DELETE FROM CAREERINFO WHERE CNUM=?";
+	// ÏøºÎ¶¨Î¨∏
+	private String GET_ONE = "SELECT * FROM CareerInfo WHERE CNUM=?";
+	private String GET_LIST = "SELECT * FROM CareerInfo WHERE CMEM=? ORDER BY CNUM ASC, STARTDATE ASC";
+	private String INSERT = "INSERT INTO CareerInfo (STARTDATE, ENDDATE, COMPNAME, POSITION, CRANK, DUTY, CMEM) VALUES (?, ?, ?, ?, ?, ?, ?)";
+	private String UPDATE = "UPDATE CareerInfo SET STARTDATE=?, ENDDATE=?, COMPNAME=?, POSITION=?, CRANK=?, DUTY=? WHERE CNUM=?";
+	private String DELETE = "DELETE FROM CareerInfo WHERE CNUM=?";
 
-	private String GET_LIST_ALL = "SELECT * FROM CAREERINFO ORDER BY CMEM ASC";
+	private String GET_LIST_ALL = "SELECT * FROM CareerInfo ORDER BY CMEM ASC";
 
 	//[ONE]
 	public CareerInfoVO getData(CareerInfoVO vo) {
@@ -55,7 +55,7 @@ public class CareerInfoDAO {
 	//[LIST]
 	public List<CareerInfoVO> getList() {
 		List<CareerInfoVO> datas =  jdbcTemplate.query(GET_LIST_ALL, new CareerRowMapper());
-		return datas = (datas.size()==0)? null : datas; // ªÔ«◊ø¨ªÍ : ¬¸¿Ã∂Û∏È nullπ›»Ø, æ∆¥œ∂Û∏È µ•¿Ã≈Õ π›»Ø
+		return datas = (datas.size()==0)? null : datas; // ÏÇºÌï≠Ïó∞ÏÇ∞ : Ï∞∏Ïù¥ÎùºÎ©¥ nullÎ∞òÌôò, ÏïÑÎãàÎùºÎ©¥ Îç∞Ïù¥ÌÑ∞ Î∞òÌôò
 
 	}
 
@@ -65,7 +65,7 @@ public class CareerInfoDAO {
 		Object[] args = {vo.getCmem()};
 
 		List<CareerInfoVO> datas =  jdbcTemplate.query(GET_LIST, args, new CareerRowMapper());
-		return datas = (datas.size()==0)? null : datas; // ªÔ«◊ø¨ªÍ : ¬¸¿Ã∂Û∏È nullπ›»Ø, æ∆¥œ∂Û∏È µ•¿Ã≈Õ π›»Ø
+		return datas = (datas.size()==0)? null : datas; // ÏÇºÌï≠Ïó∞ÏÇ∞ : Ï∞∏Ïù¥ÎùºÎ©¥ nullÎ∞òÌôò, ÏïÑÎãàÎùºÎ©¥ Îç∞Ïù¥ÌÑ∞ Î∞òÌôò
 
 	}
 
@@ -75,7 +75,7 @@ public class CareerInfoDAO {
 		List<CareerInfoVO> datas =  jdbcTemplate.query(GET_LIST, args, new CareerRowMapper());
 
 
-		return datas = (datas.size()==0)? null : datas; // ªÔ«◊ø¨ªÍ : ¬¸¿Ã∂Û∏È nullπ›»Ø, æ∆¥œ∂Û∏È µ•¿Ã≈Õ π›»Ø
+		return datas = (datas.size()==0)? null : datas; // ÏÇºÌï≠Ïó∞ÏÇ∞ : Ï∞∏Ïù¥ÎùºÎ©¥ nullÎ∞òÌôò, ÏïÑÎãàÎùºÎ©¥ Îç∞Ïù¥ÌÑ∞ Î∞òÌôò
 
 	}
 
