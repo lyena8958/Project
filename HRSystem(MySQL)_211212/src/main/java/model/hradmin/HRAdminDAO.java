@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import model.member.MemberDAO;
 
 
-//SELETE ƒı∏ÆπÆ MappeR Class
+//SELETE ÏøºÎ¶¨Î¨∏ MappeR Class
 class HRAdminRowMapper implements RowMapper<HRAdminVO>{
 
 	@Override
@@ -34,12 +34,12 @@ public class HRAdminDAO {
 	@Autowired
 	private MemberDAO Memberdao;
 	
-	// ƒı∏ÆπÆ
-	private String GET_ONE = "SELECT * FROM HRADMIN WHERE HMEM=? AND PW=?";
-	private String GET_LIST = "SELECT * FROM HRADMIN";
-	private String INSERT = "INSERT INTO HRADMIN (HMEM, PW) VALUES (?, ?)";
-	private String UPDATE = "UPDATE HRADMIN SET PW=? WHERE HNUM=?";
-	private String DELETE = "DELETE FROM HRADMIN WHERE HNUM=?";
+	// ÏøºÎ¶¨Î¨∏
+	private String GET_ONE = "SELECT * FROM HRAdmin WHERE HMEM=? AND PW=?";
+	private String GET_LIST = "SELECT * FROM HRAdmin";
+	private String INSERT = "INSERT INTO HRAdmin (HMEM, PW) VALUES (?, ?)";
+	private String UPDATE = "UPDATE HRAdmin SET PW=? WHERE HMEM=?";
+	private String DELETE = "DELETE FROM HRAdmin WHERE HMEM=?";
 	
 	//[ONE]
 	public HRAdminVO getData(HRAdminVO vo) {
@@ -65,7 +65,7 @@ public class HRAdminDAO {
 		Object[] args = {vo.getHmem(), vo.getPw()};
 		
 		try {
-			 // member≈◊¿Ã∫Ìø° ªÁπ¯¿Ã ¡∂»∏∞° µ» ∞ÊøÏ, insert¡¯«‡
+			 // memberÌÖåÏù¥Î∏îÏóê ÏÇ¨Î≤àÏù¥ Ï°∞ÌöåÍ∞Ä Îêú Í≤ΩÏö∞, insertÏßÑÌñâ
 			if(Memberdao.getData(vo.getHmem())) {
 				jdbcTemplate.update(INSERT, args);
 				return true;
