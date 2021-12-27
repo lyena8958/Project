@@ -15,7 +15,7 @@ import model.licenseInfo.LicenseInfoDAO;
 import model.schoolInfo.SchoolInfoDAO;
 
 
-//SELETE ƒı∏ÆπÆ MappeR Class
+//SELETE ÏøºÎ¶¨Î¨∏ MappeR Class
 class MemberRowMapper implements RowMapper<MemberVO>{
 
 	@Override
@@ -47,7 +47,7 @@ public class MemberDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	// MemberSet ∏‚πˆ∫Øºˆ
+	// MemberSet Î©§Î≤ÑÎ≥ÄÏàò
 	@Autowired
 	private SchoolInfoDAO sdao;
 	@Autowired
@@ -58,16 +58,16 @@ public class MemberDAO {
 	private MemberSet sResult;
 
 
-	// ƒı∏ÆπÆ
-	private String GET_ONE = "SELECT * FROM MEMBER WHERE MNUM=?";
-	private String GET_LIST = "SELECT * FROM MEMBER ORDER BY MNUM ASC";
-	private String INSERT = "INSERT INTO MEMBER (MNAME, MPATH, STARTDATE, ENDDATE, BIRTHDATE, "
+	// ÏøºÎ¶¨Î¨∏
+	private String GET_ONE = "SELECT * FROM member WHERE MNUM=?";
+	private String GET_LIST = "SELECT * FROM member ORDER BY MNUM ASC";
+	private String INSERT = "INSERT INTO member (MNAME, MPATH, STARTDATE, ENDDATE, BIRTHDATE, "
 			+ "TEAMNAME, DUTY, POSITION, WORK, MRANK, MTYPE) "
 			+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	private String UPDATE = "UPDATE MEMBER SET MNAME=?, STARTDATE=?, ENDDATE=?, BIRTHDATE=?, TEAMNAME=?, DUTY=?, POSITION=?, WORK=?, MRANK=? WHERE MNUM=?";
-	private String DELETE = "DELETE FROM MEMBER WHERE MNUM=?";
+	private String UPDATE = "UPDATE member SET MNAME=?, STARTDATE=?, ENDDATE=?, BIRTHDATE=?, TEAMNAME=?, DUTY=?, POSITION=?, WORK=?, MRANK=? WHERE MNUM=?";
+	private String DELETE = "DELETE FROM member WHERE MNUM=?";
 
-	// ¥‹¿œ PK¡∂»∏
+	// Îã®Ïùº PKÏ°∞Ìöå
 	private String GET_PNUM = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'YHS' AND TABLE_NAME = 'MEMBER'";
 		//private String GET_PNUM = "SELECT NVL(MAX(MNUM),0) +1 AS MNUM FROM MEMBER";
 
@@ -81,10 +81,10 @@ public class MemberDAO {
 		List<MemberVO> mdatas = getList(); 
 		
 		//setList
-		List<MemberSet> result = new ArrayList<MemberSet>(); // π›»Ø«“ ∞¥√ºList
+		List<MemberSet> result = new ArrayList<MemberSet>(); // Î∞òÌôòÌï† Í∞ùÏ≤¥List
 		
 		System.out.println("1: "+mdatas);
-		// MemberSet setter ¿˚øÎ
+		// MemberSet setter Ï†ÅÏö©
 		for(int i = 0; i < mdatas.size(); i++) {
 
 			sResult = new MemberSet(); // setOne
@@ -102,7 +102,7 @@ public class MemberDAO {
 			// license
 			sResult.setLicense(ldao.getList(vo.getMnum()));
 			
-			result.add(sResult); // MemberSet∞¥√º ª¿‘
+			result.add(sResult); // MemberSetÍ∞ùÏ≤¥ ÏÇΩÏûÖ
 			//System.out.println("2: "+sResult);
 		}
 
