@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+
+
+
+	<!-- <bean class="controller.common.ExcelWriter_Career" id="wc" />
+	<bean class="controller.common.ExcelWriter_License" id="wl" />
+	<bean class="controller.common.ExcelWriter_School" id="ws" />
+	<bean class="controller.common.ExcelWriter_Member" id="wm" />
+
+	<bean class="common.ExcelWriterSet">
+		<constructor-arg ref="wm"></constructor-arg>
+		<constructor-arg ref="wc"></constructor-arg>
+		<constructor-arg ref="ws"></constructor-arg>
+		<constructor-arg ref="wl"></constructor-arg>		
+	</bean>
+ -->
+	<!-- <property name="careerWriter" ref="wc"/> <property name="licenseWriter" 
+		ref="wl"/> <property name="schoolWriter" ref="ws"/> <property name="memberWriter" 
+		ref="wm"/> -->
+
+	<context:component-scan
+		base-package="controller.common" />
+
+	<context:component-scan base-package="common" />
+
+	<context:component-scan
+		base-package="model.careerInfo" />
+	<context:component-scan
+		base-package="model.hradmin" />
+	<context:component-scan
+		base-package="model.licenseInfo" />
+	<context:component-scan
+		base-package="model.post" />
+	<context:component-scan
+		base-package="model.schoolInfo" />
+	<context:component-scan
+		base-package="model.member" />
+
+	<!-- <context:component-scan base-package="model"/> -->
+
+	<!-- JdbcTemplate -->
+	<!-- DB -->
+	<!-- mysql연동 -->
+<!-- 	<bean class="org.apache.commons.dbcp.BasicDataSource" id="dataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/yhs" />
+		<property name="username" value="root" />
+		<property name="password" value="8958" />
+	</bean>
+ -->
+  	<bean class="org.apache.commons.dbcp.BasicDataSource" id="dataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		
+	<!-- cafe24 -->   <property name="url" value="jdbc:mysql://localhost:3306/krea123" />
+	<!-- 로컬  <property name="url" value="jdbc:mysql://183.111.242.22:3306/krea123" />-->
+	 
+		<property name="username" value="krea123" />
+		<property name="password" value="yena0207!!" />
+	</bean>
+
+
+  
+	<!-- JDBCTemplate -->
+	<bean class="org.springframework.jdbc.core.JdbcTemplate"
+		id="jdbcTemplate">
+		<property ref="dataSource" name="dataSource" />
+	</bean>
+
+
+
+
+
+</beans>
