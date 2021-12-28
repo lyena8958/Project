@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-//SELETE ƒı∏ÆπÆ MappeR Class
+//SELETE ÏøºÎ¶¨Î¨∏ MappeR Class
 class SchoolRowMapper implements RowMapper<SchoolInfoVO>{
 
 	@Override
@@ -39,14 +39,14 @@ public class SchoolInfoDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	// ƒı∏ÆπÆ
-	private String GET_ONE = "SELECT * FROM SCHOOLINFO WHERE SNUM=?";
-	private String GET_LIST = "SELECT * FROM SCHOOLINFO WHERE SMEM=? ORDER BY SMEM ASC";
-	private String INSERT = "INSERT INTO SCHOOLINFO (STYPE, SNAME, STARTDATE, ENDDATE, FIELD, MAJOR, FINISH, SMEM) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-	private String UPDATE = "UPDATE SCHOOLINFO SET STYPE=?, SNAME=?, STARTDATE=?, ENDDATE=?, FIELD=?, MAJOR=?, FINISH=? WHERE SNUM=?";
-	private String DELETE = "DELETE FROM SCHOOLINFO WHERE SNUM=?";
+	// ÏøºÎ¶¨Î¨∏
+	private String GET_ONE = "SELECT * FROM SchoolInfo WHERE SNUM=?";
+	private String GET_LIST = "SELECT * FROM SchoolInfo WHERE SMEM=? ORDER BY SMEM ASC";
+	private String INSERT = "INSERT INTO SchoolInfo (STYPE, SNAME, STARTDATE, ENDDATE, FIELD, MAJOR, FINISH, SMEM) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	private String UPDATE = "UPDATE SchoolInfo SET STYPE=?, SNAME=?, STARTDATE=?, ENDDATE=?, FIELD=?, MAJOR=?, FINISH=? WHERE SNUM=?";
+	private String DELETE = "DELETE FROM SchoolInfo WHERE SNUM=?";
 
-	private String GET_LIST_ALL = "SELECT * FROM SCHOOLINFO ORDER BY SMEM ASC";
+	private String GET_LIST_ALL = "SELECT * FROM SchoolInfo ORDER BY SMEM ASC";
 
 	//[ONE]
 	public SchoolInfoVO getData(SchoolInfoVO vo) {
@@ -59,7 +59,7 @@ public class SchoolInfoDAO {
 	public List<SchoolInfoVO> getList() {
 		List<SchoolInfoVO> datas = jdbcTemplate.query(GET_LIST_ALL, new SchoolRowMapper());
 
-		return datas = (datas.size()==0)? null : datas; // ªÔ«◊ø¨ªÍ : ¬¸¿Ã∂Û∏È nullπ›»Ø, æ∆¥œ∂Û∏È µ•¿Ã≈Õ π›»Ø
+		return datas = (datas.size()==0)? null : datas; // ÏÇºÌï≠Ïó∞ÏÇ∞ : Ï∞∏Ïù¥ÎùºÎ©¥ nullÎ∞òÌôò, ÏïÑÎãàÎùºÎ©¥ Îç∞Ïù¥ÌÑ∞ Î∞òÌôò
 
 	}
 
@@ -68,7 +68,7 @@ public class SchoolInfoDAO {
 		Object[] args = {vo.getSmem()};
 		List<SchoolInfoVO> datas = jdbcTemplate.query(GET_LIST, args, new SchoolRowMapper());
 
-		return datas = (datas.size()==0)? null : datas; // ªÔ«◊ø¨ªÍ : ¬¸¿Ã∂Û∏È nullπ›»Ø, æ∆¥œ∂Û∏È µ•¿Ã≈Õ π›»Ø
+		return datas = (datas.size()==0)? null : datas; // ÏÇºÌï≠Ïó∞ÏÇ∞ : Ï∞∏Ïù¥ÎùºÎ©¥ nullÎ∞òÌôò, ÏïÑÎãàÎùºÎ©¥ Îç∞Ïù¥ÌÑ∞ Î∞òÌôò
 
 	}
 	//[LIST_WRITER]
@@ -76,7 +76,7 @@ public class SchoolInfoDAO {
 		Object[] args = {mnum};
 		List<SchoolInfoVO> datas = jdbcTemplate.query(GET_LIST, args, new SchoolRowMapper());
 
-		return datas = (datas.size()==0)? null : datas; // ªÔ«◊ø¨ªÍ : ¬¸¿Ã∂Û∏È nullπ›»Ø, æ∆¥œ∂Û∏È µ•¿Ã≈Õ π›»Ø
+		return datas = (datas.size()==0)? null : datas; // ÏÇºÌï≠Ïó∞ÏÇ∞ : Ï∞∏Ïù¥ÎùºÎ©¥ nullÎ∞òÌôò, ÏïÑÎãàÎùºÎ©¥ Îç∞Ïù¥ÌÑ∞ Î∞òÌôò
 
 	}
 

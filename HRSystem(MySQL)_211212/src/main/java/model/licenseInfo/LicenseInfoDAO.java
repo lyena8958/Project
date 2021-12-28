@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import model.careerInfo.CareerInfoVO;
 
 
-//SELETE ƒı∏ÆπÆ MappeR Class
+//SELETE ÏøºÎ¶¨Î¨∏ MappeR Class
 class LicenseRowMapper implements RowMapper<LicenseInfoVO>{
 
 	@Override
@@ -37,14 +37,14 @@ public class LicenseInfoDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	// ƒı∏ÆπÆ
-	private String GET_ONE = "SELECT * FROM LICENSEINFO WHERE LNUM=?";
-	private String GET_LIST = "SELECT * FROM LICENSEINFO WHERE LMEM=? ORDER BY LMEM ASC, GETDATE ASC";
-	private String INSERT = "INSERT INTO LICENSEINFO (GETDATE, EXPIREDATE, LNAME, GRADE, LMEM) VALUES (?, ?, ?, ?, ?)";
-	private String UPDATE = "UPDATE LICENSEINFO SET GETDATE=?, EXPIREDATE=?, LNAME=?, GRADE=? WHERE LNUM=?";
-	private String DELETE = "DELETE FROM LICENSEINFO WHERE LNUM=?";
+	// ÏøºÎ¶¨Î¨∏
+	private String GET_ONE = "SELECT * FROM licenseInfo WHERE LNUM=?";
+	private String GET_LIST = "SELECT * FROM licenseInfo WHERE LMEM=? ORDER BY LMEM ASC, GETDATE ASC";
+	private String INSERT = "INSERT INTO licenseInfo (GETDATE, EXPIREDATE, LNAME, GRADE, LMEM) VALUES (?, ?, ?, ?, ?)";
+	private String UPDATE = "UPDATE licenseInfo SET GETDATE=?, EXPIREDATE=?, LNAME=?, GRADE=? WHERE LNUM=?";
+	private String DELETE = "DELETE FROM licenseInfo WHERE LNUM=?";
 
-	private String GET_LIST_ALL = "SELECT * FROM LICENSEINFO ORDER BY LMEM ASC";
+	private String GET_LIST_ALL = "SELECT * FROM licenseInfo ORDER BY LMEM ASC";
 	
 	//[ONE]
 	public LicenseInfoVO getData(LicenseInfoVO vo) {
@@ -55,7 +55,7 @@ public class LicenseInfoDAO {
 	//[LIST]
 	public List<LicenseInfoVO> getList() { // LicenseInfoVO vo
 		List<LicenseInfoVO> datas = jdbcTemplate.query(GET_LIST_ALL, new LicenseRowMapper());
-		return datas = (datas.size()==0)? null : datas; // ªÔ«◊ø¨ªÍ : ¬¸¿Ã∂Û∏È nullπ›»Ø, æ∆¥œ∂Û∏È µ•¿Ã≈Õ π›»Ø
+		return datas = (datas.size()==0)? null : datas; // ÏÇºÌï≠Ïó∞ÏÇ∞ : Ï∞∏Ïù¥ÎùºÎ©¥ nullÎ∞òÌôò, ÏïÑÎãàÎùºÎ©¥ Îç∞Ïù¥ÌÑ∞ Î∞òÌôò
 	}
 
 
@@ -63,14 +63,14 @@ public class LicenseInfoDAO {
 	public List<LicenseInfoVO> getList(LicenseInfoVO vo) { // LicenseInfoVO vo
 		Object[] args = {vo.getLmem()};
 		List<LicenseInfoVO> datas = jdbcTemplate.query(GET_LIST, args, new LicenseRowMapper());
-		return datas = (datas.size()==0)? null : datas; // ªÔ«◊ø¨ªÍ : ¬¸¿Ã∂Û∏È nullπ›»Ø, æ∆¥œ∂Û∏È µ•¿Ã≈Õ π›»Ø
+		return datas = (datas.size()==0)? null : datas; // ÏÇºÌï≠Ïó∞ÏÇ∞ : Ï∞∏Ïù¥ÎùºÎ©¥ nullÎ∞òÌôò, ÏïÑÎãàÎùºÎ©¥ Îç∞Ïù¥ÌÑ∞ Î∞òÌôò
 	}
 
 	//[LIST]
 	public List<LicenseInfoVO> getList(int mnum) { // LicenseInfoVO vo
 		Object[] args = {mnum};
 		List<LicenseInfoVO> datas = jdbcTemplate.query(GET_LIST, args, new LicenseRowMapper());
-		return datas = (datas.size()==0)? null : datas; // ªÔ«◊ø¨ªÍ : ¬¸¿Ã∂Û∏È nullπ›»Ø, æ∆¥œ∂Û∏È µ•¿Ã≈Õ π›»Ø
+		return datas = (datas.size()==0)? null : datas; // ÏÇºÌï≠Ïó∞ÏÇ∞ : Ï∞∏Ïù¥ÎùºÎ©¥ nullÎ∞òÌôò, ÏïÑÎãàÎùºÎ©¥ Îç∞Ïù¥ÌÑ∞ Î∞òÌôò
 	}
 
 	//[INSERT]

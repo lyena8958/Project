@@ -47,13 +47,26 @@
 
 	<!-- JdbcTemplate -->
 	<!-- DB -->
-	<bean class="org.apache.commons.dbcp.BasicDataSource" id="dataSource" destroy-method="close">
+	<!-- mysql연동 -->
+<!-- 	<bean class="org.apache.commons.dbcp.BasicDataSource" id="dataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/yhs" />
 		<property name="username" value="root" />
 		<property name="password" value="8958" />
 	</bean>
+ -->
+  	<bean class="org.apache.commons.dbcp.BasicDataSource" id="dataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		
+	<!-- cafe24 --> <property name="url" value="jdbc:mysql://localhost:3306/krea123" />  
+	<!-- 로컬 <property name="url" value="jdbc:mysql://183.111.242.22:3306/krea123" /> -->
+	 
+		<property name="username" value="krea123" />
+		<property name="password" value="yena0207!!" />
+	</bean>
 
+
+  
 	<!-- JDBCTemplate -->
 	<bean class="org.springframework.jdbc.core.JdbcTemplate"
 		id="jdbcTemplate">

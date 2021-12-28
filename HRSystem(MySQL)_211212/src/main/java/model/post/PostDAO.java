@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-//SELETE Äõ¸®¹® MappeR Class
+//SELETE Ã„ÃµÂ¸Â®Â¹Â® MappeR Class
 class PostRowMapper implements RowMapper<PostVO>{
 
 	@Override
@@ -32,12 +32,12 @@ public class PostDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	// Äõ¸®¹®
-	private String GET_ONE = "SELECT * FROM POST WHERE PNUM=?";
-	private String GET_LIST = "SELECT * FROM POST ORDER BY WDATE DESC";
-	private String INSERT = "INSERT INTO POST (PMEM, WDATE, CATEGORY, CONTENT, PASSWORD) VALUES (?, SYSDATE, ?, ?, ?)";
-	private String UPDATE = "UPDATE POST SET PMEM=?, CATEGORY=?, CONTENT=?, PASSWORD=?, RESULT=? WHERE PNUM=?";
-	private String DELETE = "DELETE FROM POST WHERE PNUM=?";
+	// ì¿¼ë¦¬ë¬¸
+	private String GET_ONE = "SELECT * FROM post WHERE PNUM=?";
+	private String GET_LIST = "SELECT * FROM post ORDER BY WDATE DESC";
+	private String INSERT = "INSERT INTO post (PMEM, WDATE, CATEGORY, CONTENT, PASSWORD) VALUES (?, SYSDATE, ?, ?, ?)";
+	private String UPDATE = "UPDATE post SET PMEM=?, CATEGORY=?, CONTENT=?, PASSWORD=?, RESULT=? WHERE PNUM=?";
+	private String DELETE = "DELETE FROM post WHERE PNUM=?";
 	
 	//[ONE]
 	public PostVO getData(PostVO vo) {
