@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <context-param>
+    <param-name>encoding</param-name>
+    <param-value>UTF-8</param-value>
+  </context-param>
+  <error-page>
+    <exception-type>java.lang.Throwable</exception-type>
+    <location>/error/error.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/error/error404.jsp</location>
+  </error-page>
+  <servlet>
+    <servlet-name>fc</servlet-name>
+    <servlet-class>controller.post_ctrl.Post_ctrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>fc</servlet-name>
+    <url-pattern>*.pdo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ucfc</servlet-name>
+    <servlet-class>controller.userComment_Ctrl.UserComment_ctrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ucfc</servlet-name>
+    <url-pattern>*.ucdo</url-pattern>
+  </servlet-mapping>
+</web-app>
