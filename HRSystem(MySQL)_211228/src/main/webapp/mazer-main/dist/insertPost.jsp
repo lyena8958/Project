@@ -40,7 +40,8 @@
 				</a>
 			</header>
 			<div ID="loginMove">
-				<a href="loginHRAdmin.do">YHS</a>
+				<a href="loginHRAdmin.do"><img src="assets/images/logo/YHS_LOGO2.PNG"
+						alt="Logo" id="LOGO2"></a>
 			</div>
 			<div class="page-heading" style="margin-top: 60px;">
 				<div class="page-title">
