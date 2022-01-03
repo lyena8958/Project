@@ -15,7 +15,7 @@ import model.licenseInfo.LicenseInfoDAO;
 import model.schoolInfo.SchoolInfoDAO;
 
 
-//SELETE ƒı∏ÆπÆ MappeR Class
+//SELETE ÏøºÎ¶¨Î¨∏ MappeR Class
 class MemberRowMapper implements RowMapper<MemberVO>{
 
 	@Override
@@ -47,7 +47,7 @@ public class MemberDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	// MemberSet ∏‚πˆ∫Øºˆ
+	// MemberSet Î©§Î≤ÑÎ≥ÄÏàò
 	@Autowired
 	private SchoolInfoDAO sdao;
 	@Autowired
@@ -58,7 +58,7 @@ public class MemberDAO {
 	private MemberSet sResult;
 
 
-	// ƒı∏ÆπÆ
+	// ÏøºÎ¶¨Î¨∏
 	private String GET_ONE = "SELECT * FROM member WHERE MNUM=?";
 	private String GET_LIST = "SELECT * FROM member WHERE mName LIKE ? ORDER BY mnum ASC";
 	private String INSERT = "INSERT INTO member (MNAME, MPATH, STARTDATE, ENDDATE, BIRTHDATE, "
@@ -67,10 +67,13 @@ public class MemberDAO {
 	private String UPDATE = "UPDATE member SET MNAME=?, STARTDATE=?, ENDDATE=?, BIRTHDATE=?, TEAMNAME=?, DUTY=?, POSITION=?, WORK=?, MRANK=? WHERE MNUM=?";
 	private String DELETE = "DELETE FROM member WHERE MNUM=?";
 
-	// ¥‹¿œ PK¡∂»∏
+	// Îã®Ïùº PKÏ°∞Ìöå
 	private String GET_PNUM = "SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_name = 'member' AND table_schema = DATABASE()";
 		//private String GET_PNUM = "SELECT NVL(MAX(MNUM),0) +1 AS MNUM FROM MEMBER";
-
+	
+	// ÏÇ¨Î≤à Ïû¨ÏßÅÏûê Ï°∞Ìöå
+	private String GET_work = "SELECT * FROM member WHERE mnum=? AND WORK='Ïû¨ÏßÅ'";
+	
 	// MemberSet
 
 	//[SetList]
@@ -81,10 +84,10 @@ public class MemberDAO {
 		List<MemberVO> mdatas = getList(""); 
 		
 		//setList
-		List<MemberSet> result = new ArrayList<MemberSet>(); // π›»Ø«“ ∞¥√ºList
+		List<MemberSet> result = new ArrayList<MemberSet>(); // Î∞òÌôòÌï† Í∞ùÏ≤¥List
 		
 		System.out.println("1: "+mdatas);
-		// MemberSet setter ¿˚øÎ
+		// MemberSet setter Ï†ÅÏö©
 		for(int i = 0; i < mdatas.size(); i++) {
 
 			sResult = new MemberSet(); // setOne
@@ -102,7 +105,7 @@ public class MemberDAO {
 			// license
 			sResult.setLicense(ldao.getList(vo.getMnum()));
 			
-			result.add(sResult); // MemberSet∞¥√º ª¿‘
+			result.add(sResult); // MemberSetÍ∞ùÏ≤¥ ÏÇΩÏûÖ
 			//System.out.println("2: "+sResult);
 		}
 
@@ -133,8 +136,9 @@ public class MemberDAO {
 	//[ONE_INSERT]
 	public boolean getData(int mnum) {			
 		try{
+		
 			Object[] args = {mnum}; 
-			jdbcTemplate.queryForObject(GET_ONE, args, new MemberRowMapper());
+			jdbcTemplate.queryForObject(GET_work, args, new MemberRowMapper());
 			return true;
 		}catch(Exception e) {
 
